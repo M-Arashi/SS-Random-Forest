@@ -48,6 +48,7 @@
 ##
 ################################################################################
 
+
 suppressPackageStartupMessages({
   library(randomForest)
   library(glmnet)
@@ -340,15 +341,30 @@ if (is.null(live)) {
   DATA_SOURCE <- "calibrated_synthetic"
 } else {
   cat("done.\n")
-  ## Convert quantmod xts to flat data frame
-  align <- merge(live$gold, live$fx, live$dgs10, live$dgs2)
-  align <- na.omit(align)
+  ## Convert quantmod xts to flat data frame.
+  ## NOTE: quantmod sanitizes tickers containing "=" by replacing it with ".",
+  ##       so "GC=F" becomes column-name prefix "GC.F" and "EURUSD=X" becomes
+  ##       "EURUSD.X".  Hard-coding "GC=F.Close" therefore fails with
+  ##       "subscript out of bounds".  Use quantmod's Cl()/Hi()/Lo()
+  ##       accessors, which locate the column by suffix regardless of how
+  ##       the ticker prefix has been sanitised.
+  gold_xts <- live$gold
+  fx_xts   <- live$fx
+  align    <- merge(gold_xts, fx_xts, live$dgs10, live$dgs2)
+  align    <- na.omit(align)
+
+  ## Extract gold OHLC from the aligned object via accessor functions.
+  gold_close <- quantmod::Cl(align[, grep("^GC",     colnames(align))])
+  gold_high  <- quantmod::Hi(align[, grep("^GC",     colnames(align))])
+  gold_low   <- quantmod::Lo(align[, grep("^GC",     colnames(align))])
+  fx_close   <- quantmod::Cl(align[, grep("^EURUSD", colnames(align))])
+
   panel <- data.frame(
     date  = zoo::index(align),
-    gold  = as.numeric(align[, paste0("GC=F.Close")]),
-    high  = as.numeric(align[, paste0("GC=F.High")]),
-    low   = as.numeric(align[, paste0("GC=F.Low")]),
-    eur   = as.numeric(align[, paste0("EURUSD=X.Close")]),
+    gold  = as.numeric(gold_close),
+    high  = as.numeric(gold_high),
+    low   = as.numeric(gold_low),
+    eur   = as.numeric(fx_close),
     dgs10 = as.numeric(align[, "DGS10"]),
     dgs2  = as.numeric(align[, "DGS2"])
   )
