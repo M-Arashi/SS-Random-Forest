@@ -1,0 +1,151 @@
+=== verify_theory.py
+
+==========================================================================
+1.  E[S^2] = sum_l c_l (tau^2 + v_l),  c_l = 1 - 2 w_l + K w_l^2
+==========================================================================
+  Monte-Carlo  E[S^2]              = 4.001606  (mc se 0.003933)
+  corrected    sum_l c_l(tau^2+v_l) = 4.004846
+  first draft  (K-1)tau^2 + sum v_l = 3.371472
+  => first-draft tau^2 estimator bias factor: 1.2346 (1.0 would be unbiased)
+  E[tau2_hat] corrected = 0.449565   (target 0.450000)
+  E[tau2_hat] as drafted = 0.555022   (target 0.450000)
+
+==========================================================================
+2.  E[L(ybar)] = K ;  E[L(oracle)] = sum_l lambda_l
+==========================================================================
+  E[L(ybar)]   mc = 6.99903      theory = 7
+  E[L(oracle)] mc = 5.93608      theory = 5.93715
+  improvement  mc = 1.06295  theory = 1.06285
+
+==========================================================================
+3.  Status of the improvement bound asserted in the first draft
+==========================================================================
+  tau^2 =    0.01:  exact =    5.28933   drafted bound =      0.00703   HOLDS
+  tau^2 =    0.10:  exact =    2.60438   drafted bound =      0.38006   HOLDS
+  tau^2 =    0.45:  exact =    1.06285   drafted bound =      2.76207   FAILS
+  tau^2 =    5.00:  exact =    0.12926   drafted bound =     36.53078   FAILS
+  tau^2 =   50.00:  exact =    0.01338   drafted bound =    371.60330   FAILS
+
+==========================================================================
+4.  Frequentist risk of JS toward the precision-weighted mean
+==========================================================================
+  precision weights vs leaf-size weights, max abs diff = 6.94e-18
+  c = K-3                    risk mc =  6.89413  SURE prediction =  6.89966   positive part =  6.89413   (unshrunken = 7)
+  c = K-2 (too large here)   risk mc =  6.90024  SURE prediction =  6.90593   positive part =  6.90024   (unshrunken = 7)
+
+==========================================================================
+5.  Bayes risk of the JS rule with balanced leaves
+==========================================================================
+  E[L(ybar)]  mc = 11.98936   theory 12
+  E[L(JS+)]   mc = 6.35466   theory (no pos. part) 6.60000
+  E[L(oracle)] mc = 4.80583   theory 4.80000
+
+==========================================================================
+6.  Cost of a misspecified within-leaf variance
+==========================================================================
+  lambda = 0.500
+     delta   risk(shrunk)  risk(raw)   frac. of gain lost    formula
+     -0.90       0.834711   1.000000             0.669421   0.669421
+     -0.50       0.555556   1.000000             0.111111   0.111111
+     -0.20       0.506173   1.000000             0.012346   0.012346
+      0.00       0.500000   1.000000             0.000000   0.000000
+      0.50       0.520000   1.000000             0.040000   0.040000
+      2.00       0.625000   1.000000             0.250000   0.250000
+     10.00       0.847222   1.000000             0.694444   0.694444
+
+==========================================================================
+7.  Per-leaf safety region  (mu-theta)^2 < 2 tau^2 + v
+==========================================================================
+  (mu-theta)^2 =  0.0000 (threshold 0.9000):  risk 0.059172 vs 0.400000  -> improves
+  (mu-theta)^2 =  0.4500 (threshold 0.9000):  risk 0.229586 vs 0.400000  -> improves
+  (mu-theta)^2 =  0.8910 (threshold 0.9000):  risk 0.396592 vs 0.400000  -> improves
+  (mu-theta)^2 =  0.9090 (threshold 0.9000):  risk 0.403408 vs 0.400000  -> does not improve
+  (mu-theta)^2 =  2.7000 (threshold 0.9000):  risk 1.081657 vs 0.400000  -> does not improve
+
+All checks complete.
+=== verify_theory2.py
+
+==========================================================================
+A.  Bootstrap multiplicities: Var(leaf mean) and the pooled-variance df
+==========================================================================
+  E[sum_i c_i (y_i - ybar)^2] / sigma^2 : mc =  38.1026
+     nominal df  (C - 1)               :       39.0898
+     effective df (C - sum c^2 / C)    :       38.1136
+  ratio of nominal to effective leaf size, C / (C^2/sum c^2) = 1.9761
+  (a ratio near 2 means the nominal leaf count overstates the information by about a factor of two)
+  Var(ybar) mc = 0.112010   sigma^2 sum c^2 / C^2 = 0.111772   sigma^2 / C = 0.068966
+
+==========================================================================
+B.  DerSimonian-Laird estimator of tau^2 under heteroskedastic v_l
+==========================================================================
+  E[Q] mc =  27.39871    theory (K-1) + tau^2 * den =  27.44358
+  E[tau2_DL ] = 0.12048   sd = 0.10904   (target 0.12)
+  E[tau2_MoM] = 0.17681   sd = 0.28555   (target 0.12)
+  (the unweighted moment estimator is unbiased before truncation but far noisier
+   when the v_l differ by two orders of magnitude, so truncation at zero bites hard)
+
+==========================================================================
+C.  Balanced case: EB weight from DL equals 1 - (K-1)/Q ; JS uses K-3
+==========================================================================
+  max |lambda_EB(DL) - (1 - (K-1)/Q)_+|  = 1.110e-16
+  mean lambda_EB = 0.35720   mean lambda_JS = 0.43645
+  weighted Bayes risk:  raw 15.0149   JS  7.8364   EB  7.7755   oracle  6.2746   (K = 15)
+  JS theory without positive part: K - (K-3)(1-lambda) = 8.0233
+
+All checks complete.
+=== verify_theory3.py
+
+============================================================================
+A.  Risk of a forest contracted by a single factor
+============================================================================
+  Var(fhat) mc = 0.242167   vbar(rho + (1-rho)/B) = 0.241875
+  lambda* (theory) = 0.984933
+    lambda      risk mc  risk theory   gap formula
+    0.5000     0.623312     0.622969      0.622969
+    0.8000     0.331629     0.331200      0.331200
+    0.9849     0.281982     0.281545      0.281545
+    1.0000     0.282311     0.281875      0.281875
+    1.2000     0.349102     0.348700      0.348700
+    1.4000     0.532003     0.531675      0.531675
+  improvement window = (0.9699, 1.0000)
+    lambda =  0.950  inside = False  improves = False  ok
+    lambda =  0.972  inside = True   improves = True   ok
+    lambda =  0.985  inside = True   improves = True   ok
+    lambda =  0.998  inside = True   improves = True   ok
+    lambda =  1.020  inside = False  improves = False  ok
+
+============================================================================
+B.  Heterogeneous weights: exact decomposition and its bound
+============================================================================
+  max |f_SL - (f_lambar + C)| = 6.661e-16
+  max |f_lambar - (a + lambar (fhat_RF - a))| = 6.661e-16
+  fraction of draws violating |C| <= s_lambda * s_D : 0.0000
+  mean |C| = 0.01463,  mean bound = 0.08886,  mean |f_SL| = 0.79962
+  constant-weight case: max |C| = 0.000e+00
+
+============================================================================
+C.  Crossover ensemble size
+============================================================================
+  vbar = 1.0, rho = 0.02, g = 1.2
+    lambda = 0.60:  B* formula =      2.88   largest improving B, exact risks =        2
+    lambda = 0.70:  B* formula =      4.19   largest improving B, exact risks =        4
+    lambda = 0.80:  B* formula =      7.00   largest improving B, exact risks =        6
+    lambda = 0.90:  B* formula =     17.57   largest improving B, exact risks =       17
+  vbar = 1.0, rho = 0.1, g = 0.55
+    lambda = 0.60:  B* formula =       inf   largest improving B, exact risks =   >=4999
+    lambda = 0.70:  B* formula =       inf   largest improving B, exact risks =   >=4999
+    lambda = 0.80:  B* formula =       inf   largest improving B, exact risks =   >=4999
+    lambda = 0.90:  B* formula =       inf   largest improving B, exact risks =   >=4999
+
+============================================================================
+D.  Calibrating the forest-level factor from held-out predictions
+============================================================================
+  Cov(m,f)/Var(fhat)          = 0.79001
+  regression of f on fhat     = 0.79052
+  regression of Y on fhat     = 0.79278
+  (the last two agree, so the response may be used in place of the unobserved
+   regression function when the prediction is out of sample)
+  slope at the larger variance = 0.42526
+  transported to the smaller   = 0.78272   target = 0.79278
+
+All checks complete.

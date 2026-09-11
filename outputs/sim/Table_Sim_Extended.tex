@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Median test mean squared error against the true conditional mean at $n=1200$, $p=20$, with ensembles of $B=25$ trees and $R=8$ replications, against the competitors that change the leaf rule or the objective. Every competitor is tuned before it is compared: the number of sum-of-trees components for BART and the number of boosting rounds for NGBoost and for the gradient-boosted ensemble are chosen on a held-out fifth of the training sample, the ridge penalty of the local linear forest likewise, and the leaf size and split width of the tuned forest by cross-validation. Mean wall-clock time per replication is reported below the accuracy block, and is as much a part of the comparison as the accuracy.}
+\label{tab:extended}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrrr}
+\toprule
+Process & RF & SSRF--JS & SSRF & SSRF--rob & RF--tuned & SSRF--tuned & LLF & BART & NGBoost & GBM & LassoRF \\
+\midrule
+DGP~1 & 0.0886 & 0.0787 & 0.0780 & 0.0823 & \textbf{0.0544} & 0.0573 & 0.0569 & 0.0835 & 0.0843 & 0.0878 & 0.1011 \\
+DGP~2 & 0.0475 & 0.0429 & 0.0426 & 0.0449 & \textbf{0.0279} & 0.0285 & 0.0311 & 0.0310 & 0.0464 & 0.0480 & 0.0387 \\
+DGP~3 & 0.0592 & 0.0533 & 0.0527 & 0.0556 & 0.0350 & 0.0405 & \textbf{0.0297} & 0.1163 & 0.0704 & 0.0733 & 0.0657 \\
+DGP~1 runtime (s) & 0.16 & 0.16 & 0.16 & 0.19 & 3.59 & 3.74 & 2.68 & 30.80 & 1.62 & 0.24 & 0.08 \\
+DGP~2 runtime (s) & 0.15 & 0.15 & 0.15 & 0.19 & 3.48 & 3.61 & 2.66 & 7.72 & 1.41 & 0.23 & 0.09 \\
+DGP~3 runtime (s) & 0.16 & 0.16 & 0.16 & 0.18 & 3.66 & 3.80 & 2.66 & 7.50 & 1.25 & 0.18 & 0.06 \\
+\bottomrule
+\end{tabular}}
+\end{table}

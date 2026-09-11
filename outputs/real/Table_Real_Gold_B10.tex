@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Rolling-origin out-of-sample performance for the next-day gold log return, in percent, with ensembles of $B=10$ trees. The Sharpe ratio is that of a sign-based strategy charged two basis points on the day a position flips. The last column reports Holm-adjusted Diebold--Mariano $p$-values against SSRF--JS.}
+\label{tab:gold_B10}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & MSE & MAE & Interval score & Sharpe & Holm $p$ \\
+\midrule
+RF & 1.2800 & 0.7714 & 7.058 & -0.102 & 0.000 \\
+SSRF--JS & 1.2507 & 0.7613 & 6.922 & -0.091 & (ref.) \\
+SSRF & 1.2440 & 0.7594 & 6.886 & -0.088 & 0.000 \\
+LassoRF & 1.2415 & 0.7665 & 6.700 & 0.020 & 0.783 \\
+GBM & 1.1081 & 0.7100 & 6.413 & 0.040 & 0.000 \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\parbox{\textwidth}{\footnotesize These figures were produced from a series calibrated to the published moments of daily gold log returns, because the market-data download was unavailable in the environment that ran the script. They are not estimates from the market data.}
+\end{table}
+

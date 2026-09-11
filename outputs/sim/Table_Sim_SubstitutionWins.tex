@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\caption{Percentage of replications in which the shrunken forest attains a lower test mean squared error than the forest it was built from, for the configurations of Table~\ref{tab:substitution}.}
+\label{tab:substitution_wins}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+Process & $n_0$ & $B{=}1$ & $B{=}3$ & $B{=}5$ & $B{=}10$ & $B{=}25$ & $B{=}50$ & $B{=}100$ & $B{=}250$ & $B{=}500$ \\
+\midrule
+DGP~1 & 2 & 100 & 100 & 100 & 100 & 100 & 100 & 100 & 97 & 97 \\
+DGP~2 & 2 & 100 & 100 & 100 & 100 & 100 & 100 & 97 & 90 & 90 \\
+DGP~3 & 2 & 100 & 100 & 100 & 100 & 97 & 77 & 57 & 43 & 37 \\
+\addlinespace
+DGP~1 & 5 & 100 & 100 & 100 & 100 & 100 & 100 & 87 & 77 & 77 \\
+DGP~2 & 5 & 100 & 100 & 100 & 100 & 100 & 97 & 90 & 70 & 70 \\
+DGP~3 & 5 & 100 & 100 & 100 & 100 & 70 & 50 & 30 & 23 & 17 \\
+\addlinespace
+DGP~1 & 20 & 100 & 100 & 100 & 97 & 67 & 43 & 37 & 33 & 33 \\
+DGP~2 & 20 & 100 & 100 & 100 & 87 & 30 & 7 & 3 & 3 & 3 \\
+DGP~3 & 20 & 100 & 100 & 93 & 37 & 10 & 13 & 10 & 7 & 3 \\
+\bottomrule
+\end{tabular}}
+\end{table}

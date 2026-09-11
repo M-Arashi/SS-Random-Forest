@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Rolling-origin out-of-sample performance for the Gold/USD--EUR bicurrency spread, in percent, with ensembles of $B=500$ trees.}
+\label{tab:bic_B500}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & MSE & MAE & Interval score & Sharpe & Holm $p$ \\
+\midrule
+RF & 1.9174 & 0.9543 & 8.411 & 0.284 & 0.000 \\
+SSRF--JS & 1.9054 & 0.9509 & 8.373 & 0.313 & (ref.) \\
+SSRF & 1.9040 & 0.9506 & 8.369 & 0.245 & 0.015 \\
+LassoRF & 1.9785 & 0.9747 & 8.593 & -0.304 & 0.059 \\
+GBM & 1.8596 & 0.9382 & 8.212 & 0.259 & 0.059 \\
+\bottomrule
+\end{tabular}
+\\[2pt]
+\parbox{\textwidth}{\footnotesize These figures were produced from a series calibrated to the published moments of daily gold log returns, because the market-data download was unavailable in the environment that ran the script. They are not estimates from the market data.}
+\end{table}
+

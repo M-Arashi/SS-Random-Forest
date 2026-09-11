@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\caption{The single contraction factor that minimises forest risk against the true conditional mean, found by a grid search on $[0, 1.4]$, alongside the leaf-size-weighted mean of the factors the tree-level rule produces. Minimum leaf size $5$, $p=10$, $R=15$ replications. A best factor at or above one means no contraction of any size improves the forest, which is the third branch of the improvement window.}
+\label{tab:level}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrrr}
+\toprule
+Process & $n$ & $B{=}5$ & $B{=}25$ & $B{=}100$ & $B{=}500$ & tree-level $\bar{\hat\lambda}$ \\
+\midrule
+DGP~1 & 200 & 0.360 & 0.600 & 0.700 & 0.730 & 0.793 \\
+DGP~1 & 600 & 0.420 & 0.680 & 0.760 & 0.780 & 0.795 \\
+DGP~1 & 1200 & 0.430 & 0.710 & 0.810 & 0.840 & 0.792 \\
+\addlinespace
+DGP~2 & 200 & 0.400 & 0.670 & 0.790 & 0.820 & 0.792 \\
+DGP~2 & 600 & 0.440 & 0.750 & 0.850 & 0.880 & 0.785 \\
+DGP~2 & 1200 & 0.470 & 0.750 & 0.840 & 0.870 & 0.790 \\
+\addlinespace
+DGP~3 & 200 & 0.500 & 0.840 & 0.930 & 0.950 & 0.780 \\
+DGP~3 & 600 & 0.560 & 0.820 & 0.900 & 0.920 & 0.764 \\
+DGP~3 & 1200 & 0.490 & 0.750 & 0.820 & 0.850 & 0.678 \\
+\bottomrule
+\end{tabular}
+\end{table}

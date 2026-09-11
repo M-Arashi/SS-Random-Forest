@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{How far the rule in use sits from the common-factor forest of Theorem~\ref{tab:substitution}. The first block gives the across-tree covariance term of Proposition~\ref{prop:hetero} as a percentage of the prediction's own distance from the anchor; the second gives the across-tree standard deviation of the fitted weight; the third gives the percentage difference in risk between the heterogeneous rule and its common-factor counterpart. The decomposition itself held to machine precision in every replication.}
+\label{tab:hetero}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{$100\,|C|$ relative to the deviation} & \multicolumn{3}{c}{across-tree $s_\lambda$} & \multicolumn{3}{c}{risk gap (\%)} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-11}
+Rule & $n$ & $B{=}10$ & $B{=}100$ & $B{=}500$ & $B{=}10$ & $B{=}100$ & $B{=}500$ & $B{=}10$ & $B{=}100$ & $B{=}500$ \\
+\midrule
+EB & 300 & 4.68 & 1.97 & 1.05 & 0.079 & 0.081 & 0.077 & -1.59 & -0.99 & -0.68 \\
+EB & 1200 & 3.75 & 1.49 & 0.83 & 0.068 & 0.068 & 0.068 & -1.72 & -0.88 & -0.63 \\
+\addlinespace
+JS & 300 & 2.90 & 1.14 & 0.60 & 0.052 & 0.051 & 0.047 & 0.34 & -0.27 & -0.25 \\
+JS & 1200 & 1.73 & 0.58 & 0.30 & 0.034 & 0.030 & 0.030 & 0.23 & -0.16 & -0.19 \\
+\bottomrule
+\end{tabular}}
+\end{table}

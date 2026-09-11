@@ -1,0 +1,34 @@
+\begin{table}[htbp]
+\centering
+\caption{Median test mean squared error against the true conditional mean, $R=20$ replications, minimum leaf size $5$, $p=10$. The three rightmost columns give the mean factor the leaf-level rule produces, the mean cross-validated estimate of the forest-level factor, and the factor a grid search against the true conditional mean would have chosen. Cal--CV and Cal--IJ contract the forest prediction by a single calibrated factor, estimated by cross-validation and by the out-of-bag route; Cal--CV--local varies that factor with the local prediction variance.}
+\label{tab:calibration}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Process & $n$ & $B$ & RF & SSRF--JS & Cal--CV & Cal--CV--local & Cal--IJ & $\bar{\hat\lambda}_{\mathrm{tree}}$ & $\hat\lambda_{\mathrm{cv}}$ & $\lambda^\star$ \\
+\midrule
+DGP~1 & 300 & 10 & 0.1541 & 0.1205 & \textbf{0.1124} & 0.1193 & 0.1376 & 0.79 & 0.49 & 0.52 \\
+DGP~1 & 300 & 100 & 0.0952 & \textbf{0.0807} & 0.0913 & 0.0879 & 0.0873 & 0.79 & 0.66 & 0.76 \\
+DGP~1 & 300 & 500 & 0.0820 & \textbf{0.0779} & 0.0823 & 0.0809 & 0.0790 & 0.80 & 0.70 & 0.79 \\
+DGP~1 & 1200 & 10 & 0.1272 & 0.1000 & \textbf{0.0913} & 0.0968 & 0.1419 & 0.79 & 0.56 & 0.58 \\
+DGP~1 & 1200 & 100 & 0.0633 & 0.0583 & \textbf{0.0582} & 0.0593 & 0.0629 & 0.79 & 0.78 & 0.85 \\
+DGP~1 & 1200 & 500 & \textbf{0.0564} & 0.0573 & 0.0573 & 0.0564 & 0.0576 & 0.79 & 0.83 & 0.88 \\
+\addlinespace
+DGP~2 & 300 & 10 & 0.0949 & 0.0766 & \textbf{0.0688} & 0.0703 & 0.0767 & 0.77 & 0.49 & 0.52 \\
+DGP~2 & 300 & 100 & 0.0514 & \textbf{0.0489} & 0.0525 & 0.0506 & 0.0516 & 0.77 & 0.66 & 0.81 \\
+DGP~2 & 300 & 500 & 0.0448 & \textbf{0.0428} & 0.0448 & 0.0446 & 0.0467 & 0.77 & 0.76 & 0.84 \\
+DGP~2 & 1200 & 10 & 0.0698 & 0.0523 & \textbf{0.0481} & 0.0493 & 0.0761 & 0.78 & 0.58 & 0.60 \\
+DGP~2 & 1200 & 100 & 0.0302 & \textbf{0.0291} & 0.0292 & 0.0292 & 0.0301 & 0.78 & 0.83 & 0.85 \\
+DGP~2 & 1200 & 500 & 0.0268 & 0.0280 & 0.0276 & \textbf{0.0264} & 0.0280 & 0.78 & 0.84 & 0.91 \\
+\addlinespace
+DGP~3 & 300 & 10 & 0.1164 & \textbf{0.1022} & 0.1067 & 0.1063 & 0.1340 & 0.72 & 0.58 & 0.66 \\
+DGP~3 & 300 & 100 & \textbf{0.0565} & 0.0593 & 0.0584 & 0.0569 & 0.0591 & 0.75 & 0.90 & 0.94 \\
+DGP~3 & 300 & 500 & 0.0661 & 0.0657 & 0.0674 & \textbf{0.0640} & 0.0655 & 0.74 & 0.88 & 0.95 \\
+DGP~3 & 1200 & 10 & 0.0941 & \textbf{0.0753} & 0.0759 & 0.0766 & 0.1272 & 0.74 & 0.71 & 0.70 \\
+DGP~3 & 1200 & 100 & 0.0402 & 0.0421 & 0.0376 & 0.0378 & \textbf{0.0376} & 0.73 & 0.88 & 0.88 \\
+DGP~3 & 1200 & 500 & 0.0372 & 0.0416 & 0.0349 & \textbf{0.0348} & 0.0355 & 0.71 & 0.92 & 0.91 \\
+\bottomrule
+\end{tabular}}
+\end{table}

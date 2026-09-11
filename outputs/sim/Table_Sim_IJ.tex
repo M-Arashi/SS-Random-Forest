@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Reliability of the bias-corrected infinitesimal jackknife as the ensemble grows, at $n=300$, $p=10$. The ratio is the mean jackknife estimate divided by the variance of the forest prediction over independent training samples, so one is exact; the correlation is taken across test points between the two. The estimate is unusable at small ensembles and becomes trustworthy as $B$ approaches $n$, which is why the cross-validated calibration is the one recommended in Section~\ref{subsec:calibration}.}
+\label{tab:ij}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Process & $B{=}10$ & $B{=}50$ & $B{=}200$ & $B{=}1000$ \\
+\midrule
+DGP~1 ratio & 4.24 & 2.12 & 0.97 & 0.71 \\
+DGP~1 correlation & 0.15 & 0.41 & 0.74 & 0.77 \\
+DGP~2 ratio & 4.49 & 2.16 & 1.01 & 0.73 \\
+DGP~2 correlation & 0.27 & 0.26 & 0.34 & 0.58 \\
+DGP~3 ratio & 5.15 & 2.49 & 1.06 & 0.77 \\
+DGP~3 correlation & 0.44 & 0.41 & 0.42 & 0.73 \\
+\bottomrule
+\end{tabular}
+\end{table}

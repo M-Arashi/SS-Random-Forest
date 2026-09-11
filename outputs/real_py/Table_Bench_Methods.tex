@@ -1,0 +1,34 @@
+\begin{table}[htbp]
+\centering
+\caption{Median out-of-sample mean squared error on the benchmark suite, as a percentage change from the standard forest of the same size. Negative entries beat the standard forest; bold marks the best method in each row. Entries are omitted where a method is not defined for the dataset, which happens for the penalised and local linear competitors when the design has a single column or very few rows.}
+\label{tab:bench_methods}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{rlrrrrrrrrr}
+\toprule
+$B$ & Dataset & RF & SSRF--JS & SSRF & SSRF--rob & SSRF--naive & RF--tuned & SSRF--tuned & LassoRF & GBM \\
+\midrule
+5 & \texttt{attitude} & \textbf{0.0} & 0.0 & 2.3 & 0.0 & 0.3 & --- & --- & --- & --- \\
+5 & \texttt{swiss} & \textbf{0.0} & 5.2 & 2.8 & 5.4 & 4.4 & --- & --- & --- & --- \\
+5 & \texttt{savings} & 0.0 & 0.6 & \textbf{-0.2} & 3.3 & 0.2 & --- & --- & --- & --- \\
+5 & \texttt{airquality} & \textbf{0.0} & 4.1 & 7.3 & 2.5 & 2.5 & --- & --- & --- & --- \\
+5 & \texttt{mcycle} & 0.0 & -1.0 & \textbf{-1.8} & 0.0 & 0.4 & --- & --- & --- & --- \\
+5 & \texttt{servo} & \textbf{0.0} & 11.2 & 14.2 & 10.0 & 7.0 & --- & --- & --- & --- \\
+5 & \texttt{ozone} & \textbf{0.0} & 3.6 & 3.6 & 2.4 & 2.5 & --- & --- & --- & --- \\
+5 & \texttt{cpus} & \textbf{0.0} & 8.6 & 10.1 & 0.5 & 4.9 & --- & --- & --- & --- \\
+5 & \texttt{diabetes} & 0.0 & -0.2 & \textbf{-0.3} & -0.3 & -0.3 & --- & --- & --- & --- \\
+5 & \texttt{boston} & \textbf{0.0} & 1.8 & 3.0 & 0.5 & 0.7 & --- & --- & --- & --- \\
+\addlinespace
+500 & \texttt{attitude} & \textbf{0.0} & 0.5 & 6.2 & 0.5 & 2.3 & --- & --- & --- & --- \\
+500 & \texttt{swiss} & \textbf{0.0} & 7.3 & 13.8 & 6.8 & 6.8 & --- & --- & --- & --- \\
+500 & \texttt{savings} & \textbf{0.0} & 0.8 & 2.9 & 0.9 & 0.9 & --- & --- & --- & --- \\
+500 & \texttt{airquality} & 0.0 & 13.9 & 18.0 & 8.1 & 8.6 & -13.2 & \textbf{-13.6} & -3.2 & -5.0 \\
+500 & \texttt{mcycle} & 0.0 & 2.5 & 3.6 & 0.2 & \textbf{-0.5} & --- & --- & --- & --- \\
+500 & \texttt{servo} & 0.0 & 11.1 & 12.4 & 7.9 & 5.9 & -20.6 & -19.6 & 9.3 & \textbf{-48.1} \\
+500 & \texttt{ozone} & 0.0 & 1.4 & 1.6 & 0.6 & 0.6 & \textbf{-1.5} & 0.0 & 0.7 & 13.1 \\
+500 & \texttt{cpus} & 0.0 & 1.6 & 2.7 & -0.2 & -0.9 & -50.8 & -54.8 & 21.9 & \textbf{-60.9} \\
+500 & \texttt{diabetes} & 0.0 & 1.6 & 1.8 & 0.9 & 0.5 & 1.9 & 1.8 & \textbf{-0.5} & 7.5 \\
+500 & \texttt{boston} & 0.0 & 8.6 & 9.3 & 2.9 & 3.8 & \textbf{-18.5} & -16.9 & 11.9 & -18.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

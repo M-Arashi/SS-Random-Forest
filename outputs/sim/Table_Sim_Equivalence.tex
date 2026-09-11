@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Tree-equivalence factor: the number of unshrunken trees whose risk matches that of $B$ shrunken ones, divided by $B$, obtained by interpolating the standard forest's risk curve in $\log B$. An entry of $2$ means that shrinkage buys what doubling the ensemble would have bought, and an entry below $1$ means the shrunken forest is matched by fewer unshrunken trees, so the shrinkage has done harm. An entry of $\infty$ means the shrunken forest of that size is more accurate than the unshrunken forest at every size examined, up to $600$ trees. Minimum leaf size $5$, $n=600$, $p=10$.}
+\label{tab:equivalence}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrrrr}
+\toprule
+Process & $B{=}5$ & $B{=}10$ & $B{=}15$ & $B{=}25$ & $B{=}40$ & $B{=}50$ & $B{=}60$ & $B{=}100$ & $B{=}150$ & $B{=}250$ & $B{=}400$ & $B{=}600$ \\
+\midrule
+DGP~1 & 1.8 & 1.9 & 2.1 & 2.5 & 3.5 & 7.1 & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+DGP~2 & 1.7 & 1.6 & 1.8 & 1.8 & 1.8 & 2.0 & 2.1 & 2.7 & 3.2 & $\infty$ & $\infty$ & $\infty$ \\
+DGP~3 & 1.7 & 1.6 & 1.5 & 1.3 & 1.1 & 1.0 & 0.9 & 0.7 & 0.6 & 0.4 & 0.2 & 0.2 \\
+\bottomrule
+\end{tabular}}
+\end{table}

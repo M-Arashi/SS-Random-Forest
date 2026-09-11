@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\caption{Tree-equivalence factor: the number of unshrunken trees whose risk matches that of $B$ shrunken ones, divided by $B$. An entry below $1$ means the shrunken forest is matched by fewer unshrunken trees, so the shrinkage has done harm; an entry of $\infty$ means no ensemble size in the range examined reaches the shrunken risk.}
+\label{tab:equivalence}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrrrr}
+\toprule
+Process & $B{=}5$ & $B{=}10$ & $B{=}15$ & $B{=}25$ & $B{=}40$ & $B{=}60$ & $B{=}100$ & $B{=}150$ & $B{=}250$ & $B{=}400$ & $B{=}600$ \\
+\midrule
+DGP~1 & 2.9 & 1.2 & 1.3 & 1.2 & 12.8 & 3.4 & $\infty$ & 1.5 & $\infty$ & $\infty$ & $\infty$ \\
+DGP~2 & 1.6 & 1.7 & 2.1 & 2.0 & 2.1 & 3.2 & $\infty$ & $\infty$ & $\infty$ & $\infty$ & $\infty$ \\
+DGP~3 & 1.2 & 1.2 & 1.3 & 1.2 & 1.1 & 1.0 & 1.0 & 0.9 & 0.6 & 0.5 & 0.3 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
